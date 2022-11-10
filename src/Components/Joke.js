@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 
 function Joke({setup, punchline}){
-    console.log({setup})
-    if({setup} === ''){
+    if(setup === ''){
         return (
             <div>
+                <p>I got no setup</p>
                 <p>{punchline}</p>
             </div>
         )
