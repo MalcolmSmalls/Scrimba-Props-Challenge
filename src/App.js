@@ -1,7 +1,9 @@
 import './App.css';
 import Joke from './Components/Joke'
+import jokesData from "./jokesData"
 
 function App() {
+  console.log(jokesData)
   const jokeOne = {
     setup: 'I got my daughter a fridge for her birthday.',
     punchline: `I can't wait to see her face light up when she opens it.`
@@ -26,13 +28,19 @@ function App() {
 
   const pickedJoke = jokeCollection[Math.floor(Math.random() * 5)]
 
+  const jokeElements = jokesData.map(item => {
+    return <Joke setup = {item.setup} punchline = {item.punchline} />
+  })
+
   return (
     <div className="App">
-      <Joke setup={jokeOne.setup} punchline={jokeOne.punchline}/>
+      {/* <Joke setup={jokeOne.setup} punchline={jokeOne.punchline}/>
       <Joke setup="How did the hacker escape the police?" punchline="He just ransomware!"/>
       <Joke setup={jokeCollection[2].setup} punchline={jokeCollection[2].punchline}/>
       <Joke setup={pickedJoke.setup} punchline={pickedJoke.punchline}/>
       <Joke setup={jokeCollection[5].setup} punchline={jokeCollection[5].punchline}/>
+      <Joke setup={1} punchline={2}/> */}
+    {jokeElements}
     </div>
   );
 }
