@@ -1,6 +1,10 @@
 import React, { Component } from "react"
 
-function Joke({setup, punchline}){
+function Joke({setup, punchline, toggle, show}){
+    const styles = {
+        display: { show } ? 'block' : 'hidden' 
+    }
+
     if(setup === ''){
         return (
             <div>
@@ -12,7 +16,8 @@ function Joke({setup, punchline}){
         return (
             <div>
                 <p><strong>{setup}</strong></p>
-                <p>{punchline}</p>
+                <button onClick={toggle}>Show Punchline</button>
+                <p style={styles}>{punchline}</p>
             </div>
         )
     }

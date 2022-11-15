@@ -1,9 +1,18 @@
 import './App.css';
 import Joke from './Components/Joke'
 import jokesData from "./jokesData"
+import React, { Component } from "react"
 
 function App() {
-  console.log(jokesData)
+
+  const [isShownState, setIsShownState] = React.useState(false)
+
+  function toggle(id){
+    setIsShownState(prevIsShownState => prevIsShownState === false? true : false)
+    
+  }
+
+
   const jokeOne = {
     setup: 'I got my daughter a fridge for her birthday.',
     punchline: `I can't wait to see her face light up when she opens it.`
@@ -29,7 +38,7 @@ function App() {
   const pickedJoke = jokeCollection[Math.floor(Math.random() * 5)]
 
   const jokeElements = jokesData.map(item => {
-    return <Joke setup = {item.setup} punchline = {item.punchline} />
+    return <Joke setup = {item.setup} punchline = {item.punchline} toggle = { () => toggle(item.id)} show = {isShownState} />
   })
 
   return (
