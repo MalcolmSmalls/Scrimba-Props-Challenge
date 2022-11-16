@@ -1,26 +1,22 @@
 import React, { Component } from "react"
 
-function Joke({setup, punchline, toggle, show}){
-    const styles = {
-        display: { show } ? 'block' : 'hidden' 
+function Joke({setup, punchline}){
+    const [isShownState, setIsShownState] = React.useState(false)
+
+    function toggle(){
+      setIsShownState(prevIsShownState => prevIsShownState === false? true : false)
+      
     }
 
-    if(setup === ''){
         return (
             <div>
-                <p>I got no setup</p>
-                <p>{punchline}</p>
-            </div>
-        )
-    }else {
-        return (
-            <div>
-                <p><strong>{setup}</strong></p>
+                { setup && <p><strong>{setup}</strong></p> }
                 <button onClick={toggle}>Show Punchline</button>
-                <p style={styles}>{punchline}</p>
+                { isShownState && <p>{punchline}</p>}
             </div>
         )
-    }
+    
 }
+
 
 export default Joke

@@ -5,12 +5,6 @@ import React, { Component } from "react"
 
 function App() {
 
-  const [isShownState, setIsShownState] = React.useState(false)
-
-  function toggle(id){
-    setIsShownState(prevIsShownState => prevIsShownState === false? true : false)
-    
-  }
 
 
   const jokeOne = {
@@ -38,7 +32,7 @@ function App() {
   const pickedJoke = jokeCollection[Math.floor(Math.random() * 5)]
 
   const jokeElements = jokesData.map(item => {
-    return <Joke setup = {item.setup} punchline = {item.punchline} toggle = { () => toggle(item.id)} show = {isShownState} />
+    return <Joke setup = {item.setup} punchline = {item.punchline} />
   })
 
   return (
